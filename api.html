@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>RUBEUS</title>
+  <meta name="robots" content="noindex">
+  <title>Pesquisa</title>
   
   <script type="text/javascript">
 
@@ -51,13 +52,23 @@ function rubeus() {
 <body>
 
 <div>
-<p>Motivo de não conclusão da inscrição - v1303</p>
+<p>Motivo de não conclusão da inscrição - v1323</p>
 
 <form name="pesquisa">
-<select name="opcoes"><optgroup><option value="null" id="i5w6i">Selecione uma opção</option></optgroup><optgroup><option value="Moderadamente insatisfeito">Moderadamente insatisfeito</option></optgroup><optgroup><option value="Extremamente insatisfeito">Extremamente insatisfeito</option></optgroup><optgroup><option value="Outro">Outro</option></optgroup><optgroup><option value="Extremamente satisfeito">Extremamente satisfeito</option></optgroup><optgroup><option value="Moderadamente satisfeito">Moderadamente satisfeito</option></optgroup><optgroup><option value="Pouco satisfeito">Pouco satisfeito</option></optgroup><optgroup><option value="Nem satisfeito, nem insatisfeito">Nem satisfeito, nem insatisfeito</option></optgroup><optgroup><option value="Pouco insatisfeito">Pouco insatisfeito</option></optgroup></select><span name="validationMessage" class="col s12 validationMessage"></span><br><br>
-<input name="outromotivo" type="textarea" placeholder="outro motivo"></input><br><br>
-<button type="button" onclick="rubeus()">Enviar</button>
+	<select name="opcoes">
+		<optgroup><option value="null" id="i5w6i">Selecione uma opção</option></optgroup>
+		<optgroup><option value="Moderadamente insatisfeito">Moderadamente insatisfeito</option></optgroup>
+		<optgroup><option value="Extremamente insatisfeito">Extremamente insatisfeito</option></optgroup>
+		<optgroup><option value="Outro">Outro</option></optgroup>
+		<optgroup><option value="Extremamente satisfeito">Extremamente satisfeito</option></optgroup>
+		<optgroup><option value="Moderadamente satisfeito">Moderadamente satisfeito</option></optgroup>
+		<optgroup><option value="Pouco satisfeito">Pouco satisfeito</option></optgroup>
+		<optgroup><option value="Nem satisfeito, nem insatisfeito">Nem satisfeito, nem insatisfeito</option></optgroup>
+		<optgroup><option value="Pouco insatisfeito">Pouco insatisfeito</option></optgroup>
+	</select><br><br>
+	<textarea name="outromotivo" rows="4" cols="50" placeholder="outro motivo"></textarea><br><br>
+	<button type="button" onclick="rubeus()">Enviar</button>
+</form>
 </div>
 </body>
 </html>
-
