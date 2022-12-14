@@ -1,0 +1,116 @@
+<html>
+
+<head>
+    <title>Integração Rubeus</title>
+    <link rel="icon" size="32x32" type="image/png" href="https://tracking.apprubeus.com.br/img/favicon.png">
+    <!-- SCRIPT TRACKING-->
+<script type="text/javascript" src="https://tracking.apprubeus.com.br/libs/RBTracking.min.js?rbclicod=eER78SF46oUOdDIrfy64"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+	
+</head>
+
+<body>
+<script type="text/javascript">
+function addCart(){ }
+
+	function enviarContatoRubeus() {
+    data = {
+		id: 30,
+        token: "c2afc425881aaecc48bd184502ddf4ff",
+        origem: 11 // Subistituir pela origem referente ao token
+    };
+
+    RBTracking.sendData(data, callbackPessoa);
+}
+
+function callbackPessoa(resposta) {
+    var codPessoa = resposta.data.id;
+
+    var evento = {
+        pessoa: {id: codPessoa},
+        token: "c2afc425881aaecc48bd184502ddf4ff",
+        origem: 11 // Subistituir pela origem referente ao token
+        tipo: "242"
+		camposPersonalizados: {
+			campopersonalizado_11_compl_proc: document.getElementById("message").value,
+			campopersonalizado_12_compl_proc: document.getElementById("outro_motivo").value
+			
+		}
+    };
+
+    RBTracking.sendEvent(evento, callbackEvento);
+}
+
+function callbackEvento() {
+    /**
+     * adicionar o que for desejado no callback para
+     * executar a proxima ação.
+     */
+    console.info("Evento cadastrado com sucesso!");
+}
+
+function callbackError() {
+    console.error("alguma coisa deu errado!");
+}
+
+	</script>
+    <div class="bg-primary h-100 d-flex align-items-center justify-content-center" style="background-color: #6257fc !important;">
+        <div class="w-100 d-flex justify-content-center">
+            <div class="container w-50 bg-light border border-primary rounded">
+                <br>
+                
+                <div class="container">
+                    <form>
+					
+					<fieldset class="form-group">
+    <legend><br><br>De forma geral, quão satisfeito ou insatisfeito você está com o serviço prestado pela nossa empresa?</legend>
+    
+	<input type="radio" name="action" id="message" value="Extremamente satisfeito" /><label for="track">Extremamente satisfeito</label><br />
+	
+    <input type="radio" name="action" id="message" value="Moderadamente satisfeito"  /><label for="event"></label>Moderadamente satisfeito
+<br />
+
+    <input type="radio" name="action" id="message" value="Nem satisfeito, nem insatisfeito" /><label for="message">Nem satisfeito, nem insatisfeito</label><br />
+	
+	<input type="radio" name="action" id="message" value="Pouco insatisfeito" /><label for="message">Pouco insatisfeito</label><br />
+	
+	<input type="radio" name="action" id="message" value="Pouco satisfeito" /><label for="message">Pouco satisfeito</label><br />
+	
+	<input type="radio" name="action" id="message" value="Moderadamente insatisfeito" /><label for="message">Moderadamente insatisfeito</label><br />
+	
+	<input type="radio" name="action" id="message" value="Extremamente insatisfeito" /><label for="message">Extremamente insatisfeito</label><br />
+	
+	
+</fieldset>
+					
+                        <div class="form-group">
+                            <label for="input_nome">Outro Motivo (especifique)</label>
+                            <input type="text" class="form-control border border-primary" id="outro_motivo"
+                                placeholder="Seu nome">
+                        </div>
+                        
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-outline-primary"
+                                onclick="enviarContatoRubeus()">Enviar</button>
+                        </div>
+                    </form>
+                    <br>
+                    <div id="response-span" class="alert alert-success" role="alert" hidden="true">
+                        A simple success alert—check it out!
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <p class="text-black">
+                        Modelo de integração com a plataforma Rubeus
+                    </p>
+                    <img class="logo-rubeus" src="https://tracking.apprubeus.com.br/img/favicon.png">
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
