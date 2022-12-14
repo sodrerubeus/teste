@@ -13,9 +13,20 @@
 
 <body>
 <script type="text/javascript">
+function getRadioValue()
+{
+    for (var i = 0; i < document.getElementsByName('opcao_radio').length; i++)
+    {
+        if (document.getElementsByName('opcao_radio')[i].checked)
+        {
+            return document.getElementsByName('opcao_radio')[i].value;
+        }
+    }
+}
+
 function addCart(){ }
 
-	function enviarContatoRubeus() {
+function enviarContatoRubeus() {
     data = {
 		id: 30,
         token: "c2afc425881aaecc48bd184502ddf4ff",
@@ -34,7 +45,7 @@ function callbackPessoa(resposta) {
         origem: 11 // Subistituir pela origem referente ao token
         tipo: "242"
 		camposPersonalizados: {
-			campopersonalizado_11_compl_proc: document.getElementById("message").value,
+			campopersonalizado_11_compl_proc: getRadioValue(),
 			campopersonalizado_12_compl_proc: document.getElementById("outro_motivo").value
 			
 		}
@@ -67,20 +78,20 @@ function callbackError() {
 					<fieldset class="form-group">
     <legend><br><br>De forma geral, quão satisfeito ou insatisfeito você está com o serviço prestado pela nossa empresa?</legend>
     
-	<input type="radio" name="action" id="message" value="Extremamente satisfeito" /><label for="track">Extremamente satisfeito</label><br />
+	<input type="radio" name="opcao_radio" id="1" value="Extremamente satisfeito" /><label for="track">Extremamente satisfeito</label><br />
 	
-    <input type="radio" name="action" id="message" value="Moderadamente satisfeito"  /><label for="event"></label>Moderadamente satisfeito
+    <input type="radio" name="opcao_radio" id="2" value="Moderadamente satisfeito"  /><label for="event"></label>Moderadamente satisfeito
 <br />
 
-    <input type="radio" name="action" id="message" value="Nem satisfeito, nem insatisfeito" /><label for="message">Nem satisfeito, nem insatisfeito</label><br />
+    <input type="radio" name="opcao_radio" id="3" value="Nem satisfeito, nem insatisfeito" /><label for="message">Nem satisfeito, nem insatisfeito</label><br />
 	
-	<input type="radio" name="action" id="message" value="Pouco insatisfeito" /><label for="message">Pouco insatisfeito</label><br />
+	<input type="radio" name="opcao_radio" id="4" value="Pouco insatisfeito" /><label for="message">Pouco insatisfeito</label><br />
 	
-	<input type="radio" name="action" id="message" value="Pouco satisfeito" /><label for="message">Pouco satisfeito</label><br />
+	<input type="radio" name="opcao_radio" id="5" value="Pouco satisfeito" /><label for="message">Pouco satisfeito</label><br />
 	
-	<input type="radio" name="action" id="message" value="Moderadamente insatisfeito" /><label for="message">Moderadamente insatisfeito</label><br />
+	<input type="radio" name="opcao_radio" id="6" value="Moderadamente insatisfeito" /><label for="message">Moderadamente insatisfeito</label><br />
 	
-	<input type="radio" name="action" id="message" value="Extremamente insatisfeito" /><label for="message">Extremamente insatisfeito</label><br />
+	<input type="radio" name="opcao_radio" id="7" value="Extremamente insatisfeito" /><label for="message">Extremamente insatisfeito</label><br />
 	
 	
 </fieldset>
