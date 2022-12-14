@@ -9,92 +9,22 @@
 <body>
 
 <script type="text/javascript">
+document.getElementById('myform').addEventListener('submit', function(e) {
+  e.preventDefault();
+  console.log(document.getElementById('sometext').value);
+  console.log('form submitted');
+});
 
-function getRadioValue()
-{
-    for (var i = 0; i < document.getElementsByName('opcao_radio').length; i++)
-    {
-        if (document.getElementsByName('opcao_radio')[i].checked)
-        {
-            return document.getElementsByName('opcao_radio')[i].value;
-        }
-    }
-}
-
-
-function enviarContatoRubeus() {
-    data = {
-		id: "30",
-        token: "c2afc425881aaecc48bd184502ddf4ff",
-        origem: "11"
-    };
-
-    RBTracking.sendData(data, callbackPessoa);
-}
-
-function callbackPessoa(resposta) {
-    var codPessoa = resposta.data.id;
-	var = selecao_radio = getRadioValue();
-    var evento = {
-        pessoa: {id: codPessoa},
-        token: "c2afc425881aaecc48bd184502ddf4ff",
-        origem: 11 // Subistituir pela origem referente ao token
-        tipo: "242"
-		camposPersonalizados: {
-			campopersonalizado_11_compl_proc: selecao_radio,
-			campopersonalizado_12_compl_proc: document.getElementById("outro_motivo").value
-			
-		}
-    };
-
-    RBTracking.sendEvent(evento, callbackEvento);
-}
-
-function callbackEvento() {
-    /**
-     * adicionar o que for desejado no callback para
-     * executar a proxima ação.
-     */
-    console.info("Evento cadastrado com sucesso!");
-}
-
-function callbackError() {
-    console.error("alguma coisa deu errado!");
-}
+document.getElementById('notasubmitbutton').addEventListener('click', function(e) {
+  console.log(document.getElementById('sometext').value);
+});
 
 </script>
 
-<form>				
-	<fieldset class="form-group">
-	<legend><br><br>De forma geral, quão satisfeito ou insatisfeito você está com o serviço prestado pela nossa empresa?</legend>
-
-	<input type="radio" name="opcao_radio" id="1" value="Extremamente satisfeito" /><label for="track">Extremamente satisfeito</label><br />
-
-	<input type="radio" name="opcao_radio" id="2" value="Moderadamente satisfeito"  /><label for="event"></label>Moderadamente satisfeito
-	<br />
-
-	<input type="radio" name="opcao_radio" id="3" value="Nem satisfeito, nem insatisfeito" /><label for="message">Nem satisfeito, nem insatisfeito</label><br />
-
-	<input type="radio" name="opcao_radio" id="4" value="Pouco insatisfeito" /><label for="message">Pouco insatisfeito</label><br />
-
-	<input type="radio" name="opcao_radio" id="5" value="Pouco satisfeito" /><label for="message">Pouco satisfeito</label><br />
-
-	<input type="radio" name="opcao_radio" id="6" value="Moderadamente insatisfeito" /><label for="message">Moderadamente insatisfeito</label><br />
-
-	<input type="radio" name="opcao_radio" id="7" value="Extremamente insatisfeito" /><label for="message">Extremamente insatisfeito</label><br />
-
-	</fieldset>
-
-	<div class="form-group">
-	<label for="input_nome">Outro Motivo (especifique)</label>
-	<input type="text" class="form-control border border-primary" id="outro_motivo"
-	placeholder="Seu nome">
-	</div>
-
-	<div class="d-flex justify-content-end">
-	<button type="button" class="btn btn-outline-primary"
-	onclick="enviarContatoRubeus()">Enviar</button>
-	</div>
+<form id="myform">
+  <input type="text" id="sometext">
+  <input type="submit">
+  <button id="notasubmitbutton" type="button">Submit 2</button>
 </form>
 
 </body>
