@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>RUBEUS</title>
+  
+  <script type="text/javascript">
+
+/*CAPTURA OS PARAMETROS ENVIADOS NO GET*/
+var urlAtual = window.location.href;
+var urlClass = new URL(urlAtual);
+G_idcontato = urlClass.searchParams.get("idcontato");
+G_codcurso = urlClass.searchParams.get("codcurso");
+G_codoferta = urlClass.searchParams.get("codoferta");
+
+function rubeus() {
+	/*DADOS A SEREM ENVIADOS*/
+    var dadosEvent = {
+        origem: '11',
+        token: 'c2afc425881aaecc48bd184502ddf4ff',
+		tipo: '242',
+		codCurso: G_codcurso,
+		codOferta: G_codoferta,
+		pessoa: {id: G_idcontato},
+		camposPersonalizados: {
+			campopersonalizado_11_compl_proc: document.getElementsByName("opcoes")[0].value,
+			campopersonalizado_12_compl_proc:document.getElementsByName("outromotivo")[0].value
+		}
+    }
+
+    var http = new XMLHttpRequest();
+	
+    http.open('POST', 'https://crmfcmsantacasasp.apprubeus.com.br/api/Evento/cadastro', true);
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.onreadystatechange = function () {
+        if (http.readyState > 3 && http.status == 200) {
+				console.log(http.response);
+			}
+			else {
+				console.log(http.response);
+			}
+    }
+
+    http.send(JSON.stringify(dadosEvent));
+}
+
+</script>
+
+</head>
+<body>
+
+<div>
+<p>Motivo de não conclusão da inscrição</p>
+
+<form name="pesquisa">
+<select name="opcoes"><optgroup><option value="null" id="i5w6i">Selecione uma opção</option></optgroup><optgroup><option value="Moderadamente insatisfeito">Moderadamente insatisfeito</option></optgroup><optgroup><option value="Extremamente insatisfeito">Extremamente insatisfeito</option></optgroup><optgroup><option value="Outro">Outro</option></optgroup><optgroup><option value="Extremamente satisfeito">Extremamente satisfeito</option></optgroup><optgroup><option value="Moderadamente satisfeito">Moderadamente satisfeito</option></optgroup><optgroup><option value="Pouco satisfeito">Pouco satisfeito</option></optgroup><optgroup><option value="Nem satisfeito, nem insatisfeito">Nem satisfeito, nem insatisfeito</option></optgroup><optgroup><option value="Pouco insatisfeito">Pouco insatisfeito</option></optgroup></select><span name="validationMessage" class="col s12 validationMessage"></span><br><br>
+<input name="outromotivo" type="text" placeholder="outro motivo"></input><br><br>
+<button type="button" onclick="rubeus()">Enviar</button>
+</div>
+</body>
+</html>
+
