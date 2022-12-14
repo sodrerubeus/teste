@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>RUBEUS</title>
+  
+  <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function (event) {
+	/*ESTRUTURA COM OS DADOS A SEREM ENVIADOS*/
+    var dadosEvent = {
+        origem: '0',
+        token: '9a9a9a9a9a9a9a9a9a9a9a9a9a9a9',
+		nome: 'contato teste',
+		telefonePrincipal: '32988881111',
+		emailPrincipal: 'teste@email.com',
+		camposPersonalizados: {
+			curso_compl: "curso teste"
+		}
+    }
+
+    var http = new XMLHttpRequest();
+	
+	/*A REQUISIÇÃO É FEITA IMEDIATAMENTE AO CARREGAR A PÁGINA*/
+    http.open('POST', 'https://MEUCRM.apprubeus.com.br/api/Contato/cadastro', true);
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.onreadystatechange = function () {
+        if (http.readyState > 3 && http.status == 200) {
+				console.log(http.response);
+			}
+			else {
+				console.log(http.response);
+			}
+    }
+
+    http.send(JSON.stringify(dadosEvent));
+});
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
