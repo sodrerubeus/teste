@@ -1,21 +1,45 @@
 <html>
 	<head>
-		<script type="text/javascript" src="https://tracking.apprubeus.com.br/libs/RBTracking.min.js?rbclicod=fDNYxkAju0cm12Csi5ph"></script>
+		<script type="text/javascript" src="https://tracking.apprubeus.com.br/libs/RBTracking.min.js?rbclicod=qEimxMvC8B46HPYsg2d2"></script>
 	</head>
 	<body>
-		<!--<script type="text/javascript">
-		  window.addEventListener('message', function(event) {
-      if (event.data.url) {
-        window.location.href = event.data.url;
-      }
+		<script type="text/javascript">
+		window.addEventListener("message", (msg) => {
+  if (msg.data.type === "ABRIR-FICHA") {
+    window.open(msg.data.link, "_self");
+  }
+
+  if (msg.data.type === "ResizeIframe") {
+    var height = msg.data.data+50;
+    document.getElementById('formiframe').height = height+'px';
+  }
+});
+
+setTimeout(() => { 
+  let iframeWin = document.getElementById("formiframe").contentWindow;
+
+  let msg = {
+      type: "COPY-URL",
+      url: window.location.href,
+  };
+
+  iframeWin.postMessage(msg, "*");
+}, 5000);
+
+setTimeout(function () {
+  Array.from(document.querySelectorAll("iframe")).forEach(function (iframe, index) {
+    if (iframe.classList.contains("rubeus-custom-channel-iframe") || index === 0) {
+      iframe.src = iframe.src + "?cookie=" + document.cookie.split(" ").join();
+    }
   });
-		</script>-->
+}, 1000);
+		</script>
 <b>Site Exemplo</b><br>
 	<style>
 		.altura-iframe {height: 550px; width: 400px; }
 	</style>
 	
-	<iframe class="altura-iframe" src="https://unipar.apprbs.com.br/formulario-site">
-	</iframe>
+	<iframe id="formiframe" height="850px" width="100%" src="https://esamc.apprbs.com.br/formesamcgraduacao"></iframe>
+
 	</body>
 </html>
